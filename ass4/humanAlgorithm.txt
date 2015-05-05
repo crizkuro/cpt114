@@ -1,0 +1,40 @@
+lgOrderQualifier      = 1000
+lgOrderBaseDiscount   = .05
+onlineDiscountRate    = .05
+lgOnlineDiscountRate  = .10
+salesTax              = 0.8
+
+
+Input: orderAmt
+Input: isOnlineOrder
+
+
+if isOnlineOrder == true then
+	if orderAmt >= lgOrderQualifier then
+		onlineDiscountAmt  = orderAmt * onlineDiscountRate
+		lgOrderDiscountAmt = orderAmt * lgOnlineDiscountRate
+		totalDiscountAmt   = onlineDiscountAmt + lgOrderDiscountAmt
+	else
+		onlineDiscountAmt  = orderAmt * onlineDiscountRate
+		totalDiscountAmt   = onlineDiscountAmt
+else if orderAmt >= lgOrderQualifier then
+	lgOrderDiscountAmt  = orderAmt * lgOrderBaseDiscount
+	totalDiscountAmt    = lgOrderDiscountAmt
+else
+	totalDiscountAmt = 0
+
+subTotal    = orderAmt - totalDiscountAmt
+taxAmt      = subTotal * salesTax
+grandTotal  = subTotal + taxAmt
+
+
+
+
+Output: orderAmt
+Output: onlineDiscountAmt
+Output: lgOrderDiscountAmt
+Output: totalDiscountAmt
+Output: subTotal
+Output: taxAmt
+Output: grandTotal
+

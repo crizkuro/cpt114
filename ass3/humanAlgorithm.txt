@@ -1,0 +1,27 @@
+tickFull = 10
+tickEB = 5
+dinner = 8
+dinnerWE = 12
+
+Input: numGuests
+Input: isEarlyBird
+Input: isWeekEnd
+
+if isEarlyBird = true
+tickCostPer = tickEB
+else
+tickCostPer = tickFull
+
+if isWeekEnd = true
+dinCostPer = dinnerWE
+else
+dinCostPer = dinner
+
+totalCostPer = dinCostPer + tickCostPer
+totalOwed = totalCostPer * numGuests
+
+Output: numGuests
+Output: tickCostPer
+Output: dinCostPer
+Output: totalCostPer
+Output: totalOwed

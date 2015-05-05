@@ -1,0 +1,98 @@
+<script type="text/javascript">
+// A note to the instructor
+// You may be curious about all my comments in my code
+// I wanted to explain that all of the comments with the
+// exception of this one were wrote before a single line of
+// code. I do this as a sort of todo list as well as having 
+// comments in my code incase anyone else needs to edit it
+
+
+// define varibles and assign known values
+var lgOrderQualifier      = 1000.00;
+var lgOrderBaseDiscount   = 0.05;
+var onlineDiscountRate    = 0.05;
+var lgOnlineDiscountRate  = 0.10;
+var salesTax              = 0.08;
+
+// get inputs
+var orderAmt              = prompt("Amount of order?", " ");
+var isOnlineOrder         = confirm("Online Order?");
+
+// convert order amount to float and fix its decimal location
+orderAmt = parseFloat(orderAmt);
+orderAmt = orderAmt.toFixed(2);
+
+// function for calculations (made with OOP in mind)
+function totals () {
+	// this function returns a object literal
+
+	// define varibles inside the function
+	// for better memory management
+	var totalDiscountAmt, subTotal, taxAmt, grandTotal;
+	var onlineDiscountAmt   = 0.00;
+	var lgOrderDiscountAmt  = 0.00;
+
+	// check if order was placed online
+	if (isOnlineOrder == true) {
+		// check if order is over large order qualifier
+		if (orderAmt >= lgOrderQualifier) {
+			// calculate discounts
+			onlineDiscountAmt  = orderAmt * onlineDiscountRate;
+			lgOrderDiscountAmt = orderAmt * lgOnlineDiscountRate;
+			totalDiscountAmt   = onlineDiscountAmt + lgOrderDiscountAmt;
+		// if not large order
+		} else{
+			// calculate discounts
+			onlineDiscountAmt  = orderAmt * onlineDiscountRate;
+			totalDiscountAmt   = onlineDiscountAmt;
+		};
+	// if not online order check to see if it is over large order qualifier
+	} else if (orderAmt >= lgOrderQualifier) {
+		// calculate discounts
+		lgOrderDiscountAmt  = orderAmt * lgOrderBaseDiscount;
+		totalDiscountAmt    = lgOrderDiscountAmt;
+	// if not large order
+	} else {
+		// default to no discounts
+		totalDiscountAmt = 0.00;
+	};
+	
+	// use discounts and order amount to get subtotal
+	subTotal    = orderAmt - totalDiscountAmt;
+	// calculate tax amount
+	taxAmt      = subTotal * salesTax;
+	// calculate total
+	grandTotal  = subTotal + taxAmt;
+
+	// convert resualts to a float with a fixed decimal place
+	totalDiscountAmt    = totalDiscountAmt.toFixed(2);
+	onlineDiscountAmt   = onlineDiscountAmt.toFixed(2);
+	lgOrderDiscountAmt  = lgOrderDiscountAmt.toFixed(2);
+	subTotal            = subTotal.toFixed(2);
+	taxAmt              = taxAmt.toFixed(2);
+	grandTotal          = grandTotal.toFixed(2);
+
+	// return values as object
+	return {
+		totalDiscountAmt    : totalDiscountAmt,
+		onlineDiscountAmt   : onlineDiscountAmt,
+		lgOrderDiscountAmt  : lgOrderDiscountAmt,
+		subTotal            : subTotal,
+		taxAmt              : taxAmt,
+		grandTotal          : grandTotal
+	};	
+};
+
+// create instance of object
+var totals = new totals();
+
+// create outputs
+document.write("Order amount: ", orderAmt);
+document.write("<br>Online Order Discount: ", totals.onlineDiscountAmt);
+document.write("<br>Over $1000 Discount: ", totals.lgOrderDiscountAmt);
+document.write("<br>Total Discount: ", totals.totalDiscountAmt);
+document.write("<br>Subtotal: ", totals.subTotal);
+document.write("<br>Tax: ", totals.taxAmt);
+document.write("<br>Total: ", totals.grandTotal);
+
+</script>

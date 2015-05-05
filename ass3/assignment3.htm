@@ -1,0 +1,73 @@
+<script type="text/javascript">
+// I would like to point out that I would never
+// write this program in this manner. There are
+// better ways to get inputs (such as through html)
+// also I would not directly ask if this is the weekend
+// instead I would use javascripts built in date method.
+
+// define varibles
+var tickFull, tickEB, dinner, dinnerWE, numGuests, isEarlyBird, isWeekEnd;
+
+// assign known values
+tickFull       = parseInt("10");
+tickEB         = parseInt("5");
+dinner         = parseInt("8");
+dinnerWE       = parseInt("12");
+
+// get inputs
+numGuests      = prompt("How many guests are there?", " ");
+
+// The confirm box is better suited
+// for this kind of input
+isEarlyBird    = confirm("Early Bird?");
+isWeekEnd      = confirm("Weekend?");
+
+// function for calculations (made with OOP in mind)
+function recipt () {
+	// a very simple function to create the recipt
+	// this function returns a object literal
+
+	// define varibles inside the function
+	// for better memory management
+	var tickCostPer, dinCostPer, totalCostPer, totalOwed;
+
+	// check if ticket price is full or early bird
+	if (isEarlyBird == true) {
+		tickCostPer = tickEB;
+	} else{
+		tickCostPer = tickFull;
+	};
+
+	// check if dinner is weekend price
+	if (isWeekEnd == true) {
+		dinCostPer = dinnerWE
+	} else{
+		dinCostPer = dinner
+	};
+
+	// get total cost of dinner and ticket
+	totalCostPer = dinCostPer + tickCostPer
+	// calculate amount owed
+	totalOwed = totalCostPer * numGuests
+
+	// return values as object
+	return {
+		tickCostPer : tickCostPer,
+		dinCostPer : dinCostPer,
+		totalCostPer : totalCostPer,
+		totalOwed : totalOwed
+	};
+};
+
+// create instance of object
+var totals = new recipt();
+
+// create veiwable recipt
+document.write("Total number of guests: ", numGuests);
+document.write("<br>Ticket cost for each guest: $", totals.tickCostPer);
+document.write("<br>Dinner cost for each guest: $", totals.dinCostPer);
+document.write("<br>Total cost for each guest: $", totals.totalCostPer);
+document.write("<br>Total ammount owed: $", totals.totalOwed);
+
+
+</script>

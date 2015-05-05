@@ -1,0 +1,72 @@
+You have been asked to write a property tax program for the tri-county area.  If you live in Charleston county then you owe 1 percent of your home's value if it's less than or equal to $50,000.  You owe 1.50 percent if it's greater than $50,000 but not greater than $150,000 and 2 percent if it's greater than $150,00.  If you live in Dorchester county then you owe 1.25 percent of your home's value if it's less than or equal to $50,000.  You owe 1.50 percent if it's greater than $50,000 but not greater than $150,000 and 1.75 percent if it's greater than $150,000.  If you live in Berkeley county then you owe 2 percent of your home's value if it's less than or equal to $50,000 of value, 2.25 percent if it's greater than $50,000 but not greater than $150,000 and 2.75 percent if it's greater than $150,000.
+
+
+Assumption
+
+each county has its own tax rates
+all three counties share tax groups
+there are three tax groups
+
+lowValue = 50000
+highValue = 150000
+
+taxGroup
+
+chsCountyRate1 = .01
+chsCountyRate2 = .015
+chsCountyRate3 = .02
+
+dorCountyRate1 = .0125
+dorCountyRate2 = .015
+dorCountyRate3 = .0175
+
+berkCountyRate1 = .02
+berkCountyRate2 = .0225
+berkCountyRate3 = .0275
+
+
+Input
+
+propValue
+propCounty
+
+
+Calculations
+
+if propValue <= lowValue
+	taxGroup = 1
+else if propValue > highValue
+	taxGroup = 3
+else
+	taxGroup = 2
+
+if propCounty == "Charleston"
+	if taxGroup == 1
+		taxOwed = propValue * chsCountyRate1
+	if taxGroup == 2
+		taxOwed = propValue * chsCountyRate2
+	if taxGroup == 3
+		taxOwed = propValue * chsCountyRate3
+else if propCounty == "Dorchester"
+	if taxGroup == 1
+		taxOwed = propValue * dorCountyRate1
+	if taxGroup == 2
+		taxOwed = propValue * dorCountyRate2
+	if taxGroup == 3
+		taxOwed = propValue * dorCountyRate3
+else if propCounty == "Berkeley"
+	if taxGroup == 1
+		taxOwed = propValue * berkCountyRate1
+	if taxGroup == 2
+		taxOwed = propValue * berkCountyRate2
+	if taxGroup == 3
+		taxOwed = propValue * berkCountyRate3
+
+
+Output
+
+propValue
+propCounty
+taxOwed
+
+

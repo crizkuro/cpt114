@@ -1,0 +1,52 @@
+You have been tasked with writing a program for a automotive junk yard.  They want to encourage their customers to make large purchases ($1000 or more) and to place their order online.  To do this they have set up a discount system for their customers to use.   If a customer orders online they get a 5 percent discount.  If the customer orders online and the order is $1000 or more they get an additional 10 percent off their order (total of 15%).  If their customer does not order online the only discount they provide is a 5 percent discount for orders that are $1000 or more.  Sales tax is 8 percent.  They want to be able to see the initial amount of the order, the the amount of online discount, the amount of 1000 and over discount, total amount of discounts, the subtotal (initial order minus the discount), the amount of sales tax and the grand total.
+
+
+
+Assumption
+only three types of discounts
+does not need daily or weekly totals
+
+lgOrderQualifier      = 1000
+lgOrderBaseDiscount   = .05
+onlineDiscountRate    = .05
+lgOnlineDiscountRate  = .10
+salesTax              = 0.8
+
+Input
+
+orderAmt
+isOnlineOrder
+
+
+Calculations
+
+if isOnlineOrder == true then
+	if orderAmt >= lgOrderQualifier then
+		onlineDiscountAmt  = orderAmt * onlineDiscountRate
+		lgOrderDiscountAmt = orderAmt * lgOnlineDiscountRate
+		totalDiscountAmt   = onlineDiscountAmt + lgOrderDiscountAmt
+	else
+		onlineDiscountAmt  = orderAmt * onlineDiscountRate
+		totalDiscountAmt   = onlineDiscountAmt
+else if orderAmt >= lgOrderQualifier then
+	lgOrderDiscountAmt  = orderAmt * lgOrderBaseDiscount
+	totalDiscountAmt    = lgOrderDiscountAmt
+else
+	totalDiscountAmt = 0
+
+subTotal    = orderAmt - totalDiscountAmt
+taxAmt      = subTotal * salesTax
+grandTotal  = subTotal - taxAmt
+
+
+Output
+
+orderAmt
+onlineDiscountAmt
+lgOrderDiscountAmt
+totalDiscountAmt
+subTotal
+taxAmt
+grandTotal
+
+

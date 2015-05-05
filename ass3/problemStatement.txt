@@ -1,0 +1,43 @@
+You have been asked to write a computer program for a entertainment center. They have sell their tickets at two separate  prices.  Tickets are $10 a piece except for their "early bird" movies which cost only $5 a ticket.   At the entertainment center they offer all patrons dinner along with the movie.  The cost of dinner is $8 during the week and $12 during the weekend.   All customers must pay for both dinner and the movie.   At the end of the order a receipt is printed showing:  Number of Tickets, price per ticket, price per dinner, cost of dinner and ticket, total amount owed.  
+
+
+
+Assumption
+there are only two price points for tickets
+there are only two price points for dinners
+program will not store all recepits for book keeping
+recepits can have multipe guests
+
+tickFull = 10
+tickEB = 5
+dinner = 8
+dinnerWE = 12
+
+Input
+
+numGuests
+isEarlyBird
+isWeekEnd
+
+
+Calculations
+
+if isEarlyBird = true
+tickCostPer = tickEB
+else
+tickCostPer = tickFull
+
+if isWeekEnd = true
+dinCostPer = dinnerWE
+else
+dinCostPer = dinner
+
+totalCostPer = dinCostPer + tickCostPer
+totalOwed = totalCostPer * numGuests
+
+Output
+
+numGuests
+tickCostPer
+dinCostPer
+totalCostPer

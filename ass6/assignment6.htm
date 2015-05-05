@@ -1,0 +1,113 @@
+<script type="text/javascript">
+// define varibles and assign known values
+var hbPrice = 4;
+var hdPrice = 2;
+var cdPrice = 3;
+var nPrice  = 5;
+
+// Create main function.
+function orders () {
+	// define vars used for totals
+	var hbTotal, hdTotal, cdTotal, nTotal, total;
+
+	// define loop check var
+	var runLoop = true;
+
+	// define input
+	var typeItem;
+	var count;
+
+	// define counters and assign default value
+	var hamburgers = 0;
+	var hotDogs    = 0;
+	var cornDogs   = 0;
+	var nachos     = 0;
+
+	// start loop
+	while (runLoop == true){
+		typeItem = prompt("What type of grill item? hamburgers, hot dogs, corn dogs, nachos", "");
+		count    = prompt("How many?", "");
+		count    = parseInt(count);
+
+		switch (typeItem) {
+			case "hamburgers":
+				hamburgers = hamburgers + count;
+				break;
+			case "hot dogs":
+				hotDogs = hotDogs + count;
+				break;
+			case "corn dogs":
+				cornDogs = cornDogs + count;
+				break;
+			case "nachos":
+				nachos = nachos + count;
+				break;
+			default:
+				alert("You didn't type in hamburgers, hot dogs, corn dogs, or nachos! Make sure its all lowercase.");
+				break;
+		};
+
+		runLoop = confirm("Is there another customer?");
+	};
+
+	// calculate totals
+	hbTotal = hamburgers * hbPrice;
+	hdTotal = hotDogs * hdPrice;
+	cdTotal = cornDogs * cdPrice;
+	nTotal  = nachos * nPrice;
+	total   = hbTotal + hdTotal + cdTotal + nTotal;
+
+	// convert totals to a fixed dec.
+	hbTotal = parseFloat(hbTotal);
+	hbTotal = hbTotal.toFixed(2);
+
+	hdTotal = parseFloat(hdTotal);
+	hdTotal = hdTotal.toFixed(2);
+
+	cdTotal = parseFloat(cdTotal);
+	cdTotal = cdTotal.toFixed(2);
+
+	nTotal = parseFloat(nTotal);
+	nTotal = nTotal.toFixed(2);
+
+	total = parseFloat(total);
+	total = total.toFixed(2);
+
+	// return totals as obj
+	return {
+		hamburgers : hamburgers,
+		hotDogs    : hotDogs,
+		cornDogs   : cornDogs,
+		nachos     : nachos,
+		hbTotal    : hbTotal, 
+		hdTotal    : hdTotal, 
+		cdTotal    : cdTotal, 
+		nTotal     : nTotal, 
+		total      : total
+	};
+
+
+
+};
+
+// create instance of obj
+var orders = new orders();
+
+// create end of day outputs
+document.write("The total number of hamburgers: ", orders.hamburgers);
+document.write("<br>The total number of hot dogs: ", orders.hotDogs);
+document.write("<br>The total number of corn dogs: ", orders.cornDogs);
+document.write("<br>The total number of nachos: ", orders.nachos);
+document.write("<br>");
+document.write("<br>The total dollar amount for hamburgers: $", orders.hbTotal);
+document.write("<br>The total dollar amount for hot dogs: $", orders.hdTotal);
+document.write("<br>The total dollar amount for corn dogs: $", orders.cdTotal);
+document.write("<br>The total dollar amount for nachos: $", orders.nTotal);
+document.write("<br>");
+document.write("<br>The total amount of money collected: $", orders.total);
+
+
+
+
+
+</script>

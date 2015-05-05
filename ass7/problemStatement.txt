@@ -1,0 +1,52 @@
+You need to write a program for a wedding planner. They wish to create a gift registry for each couple. Each person brings only one gift. They want the gifts broken down by the whether the gift giver is on the bride side or groom side. They also want to track particular gifts: toasters, silverware, and stemware. They want those gifts listed and have the name of the gift giver under them. The following is an example of the output they wish.
+
+
+Assumptions
+
+only three tracked items
+do not need to track items not on the list
+
+toasters
+silverware
+stemware
+
+Inputs
+
+guestName
+guestGift
+giftFor
+
+Calculations
+
+tracked items function
+if gift = tracked
+	(itemVar) = (itemVar) + name
+
+
+main function
+while loopRun = true
+	if giftFor = bride
+		if brideGuestNum = 0
+			brideGuestNum++
+			brideList = brideGuestNum + ": Bride Gifts: <br />" + guestName + ": " + guestGift
+		else
+			brideGuestNum++
+			brideList = "<br />" + brideGuestNum + ": " + guestName + ": " + guestGift
+	else
+		if groomGuestNum = 0
+			groomGuestNum++
+			groomList = groomGuestNum + ": Groom Gifts: <br />" + guestName + ": " + guestGift
+		else
+			brideGuestNum++
+			groomList = "<br />" + groomGuestNum + ": " + guestName + ": " + guestGift
+
+
+
+
+Output
+
+brideList
+groomList
+guestToaster 
+guestSilverware 
+guestStemware 

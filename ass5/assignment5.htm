@@ -1,0 +1,136 @@
+<script type="text/javascript">
+// define varibles and assign known values
+var lowValue   = 50000;
+var highValue  = 150000;
+
+var taxGroup;
+var taxOwed;
+
+// create an error flag
+var error = 0;
+
+// get inputs
+var propValue  = prompt("What is the value of the property?", " ");
+var propCounty = prompt("What county is the property in?", " ");
+
+// creat a main function
+function main () {
+// place propety in a tax group
+	if (propValue <= lowValue) {
+		taxGroup = 1;
+	} else if (propValue > highValue) {
+		taxGroup = 3;
+	} else {
+		taxGroup = 2;
+	};
+
+	// check the county input
+	switch (propCounty) {
+		case "Charleston":
+			chasTax();
+		break;
+
+		case "Dorchester":
+			dorTax();
+		break;
+
+		case "Berkeley":
+			berkTax();
+		break;
+
+		default:
+			alert("The county" + propCounty + "is not valid. Please enter Charleston, Dorchester or Berkeley.")
+			error = 1
+	}
+
+	// check for errors
+	if (error == 0) {
+		document.write("$" + propValue + " property located in " + propCounty);
+		document.write("<br>Tax Owed: $" + taxOwed)
+	} else{
+		alert("Please try again with the correct county.")
+		window.location.reload();
+	};
+};
+
+// Create a function for each county. This way will
+// cut back on amount of memory used by the application
+// as a whole.
+
+// function for Charleston county
+function chasTax () {
+	// define tax rates inside the function
+	var countyRate1 = .01;
+	var countyRate2 = .015;
+	var countyRate3 = .02;
+
+	// find amount of taxes owed basded on tax group
+	if (taxGroup == 1) {
+		taxOwed = propValue * countyRate1;
+	} else if (taxGroup == 2) {
+		taxOwed = propValue * countyRate2;
+	} else{
+		taxOwed = propValue * countyRate3;
+	};
+
+	// convert order amount to float and fix its decimal location
+	taxOwed = parseFloat(taxOwed);
+	taxOwed = taxOwed.toFixed(2);
+
+	// return output
+	return taxOwed;
+	
+};
+
+// function for Dorchester county
+function dorTax () {
+	// define tax rates inside the function
+	var countyRate1 = .0125;
+	var countyRate2 = .015;
+	var countyRate3 = .0175;
+
+	// find amount of taxes owed basded on tax group
+	if (taxGroup == 1) {
+		taxOwed = propValue * countyRate1;
+	} else if (taxGroup == 2) {
+		taxOwed = propValue * countyRate2;
+	} else{
+		taxOwed = propValue * countyRate3;
+	};
+
+	// convert order amount to float and fix its decimal location
+	taxOwed = parseFloat(taxOwed);
+	taxOwed = taxOwed.toFixed(2);
+
+	// return output
+	return taxOwed;
+};
+
+// function for Berkeley county
+function berkTax () {
+	// define tax rates inside the function
+	var countyRate1 = .02;
+	var countyRate2 = .0225;
+	var countyRate3 = .0275;
+
+	// find amount of taxes owed basded on tax group
+	if (taxGroup == 1) {
+		taxOwed = propValue * countyRate1;
+	} else if (taxGroup == 2) {
+		taxOwed = propValue * countyRate2;
+	} else{
+		taxOwed = propValue * countyRate3;
+	};
+
+	// convert order amount to float and fix its decimal location
+	taxOwed = parseFloat(taxOwed);
+	taxOwed = taxOwed.toFixed(2);
+
+	// return output
+	return taxOwed;
+};
+
+// run the main function
+main();
+
+</script>

@@ -1,0 +1,49 @@
+You have been hired by the local county fair stand to write a program that will allow them to keep track of the sale of their grilled goods. The grilled goods section sells types of hamburgers, hot dogs, corn dogs and nachos. Hamburgers are $4, hot dogs are $2, Corn dogs are $3 and nachos are $5.00. Strangely enough, a customer can only order one type of item (hotdog, nachos, etc) per visit but they can order as many of that item as they want.  Because of this constraint you want to ask the user which type of food they want and then how many of that food item. At the end of the day a report is provided.
+
+
+Assumption
+
+only four types of grilled items
+
+Hamburgers price = 4
+Hot dogs price = 2
+Corn dogs price = 3
+nachos price = 5
+
+
+Input
+
+type item (hamburger, hot dog, corn dog, nachos)
+count orderd
+another customer?
+
+Calculations
+
+if type item = "hamburger"
+	Amount hamburgers + count orderd
+if type item = "hot dog"
+	Amount hot dogs + count orderd
+if type item = "corn dog"
+	Amount corn dogs + count orderd
+if type item = "nachos"
+	Amount nachos + count orderd
+
+
+total price Hamburgers = Amount Hamburgers * Hamburgers price
+total price Hot dogs = Amount Hot dogs * Hot dogs price
+total price Corn dogs = Amount Corn dogs * Corn dogs price
+total price nachos = Amount nachos * nachos price
+
+total = total price Hamburgers + total price Hot dogs + total price Corn dogs + total price nachos
+
+Output
+
+Amount hamburgers
+Amount hot dogs
+Amount corn dogs
+Amount nachos
+total price Hamburgers
+total price Hot dogs
+total price Corn dogs
+total price nachos
+total

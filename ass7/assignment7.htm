@@ -1,0 +1,103 @@
+<script type="text/javascript">
+
+// define vars
+var guestToaster = "<br />";
+var guestSilverware = "<br />";
+var guestStemware = "<br />";
+var brideGuestNum = 0;
+var groomGuestNum = 0;
+
+// inputs
+//var giftFor = prompt("Who is the gift for the bride or groom? (all lowercase)", "");
+//var guestName = prompt("What is the guests name?", "");
+//var guestGift = prompt("What is the gift? (all lowercase)", "");
+
+// loop var
+var loopRun = true;
+
+// main function
+function main () {
+    // define vars only use in function
+    var brideList, groomList, giftFor, guestName, guestGift;
+
+    // loop run check
+    while (loopRun == true) {
+        giftFor = prompt("Who is the gift for the bride or groom? (all lowercase)", "");
+        guestName = prompt("What is the guests name?", "");
+        guestGift = prompt("What is the gift? (all lowercase)", "");
+        // check who the gift is for
+        if (giftFor == "bride") {
+            // check if its the first bride gift
+            if (brideGuestNum == 0) {
+                brideGuestNum++;
+                brideList = "Bride Gifts: <br />" + brideGuestNum + ". " + guestName + ": " + guestGift + "<br />";
+                giftTracking(guestGift, guestName);
+            } else {
+                brideGuestNum++;
+                brideList = brideList + brideGuestNum + ". " + guestName + ": " + guestGift + "<br />" ;
+                giftTracking(guestGift, guestName);
+            };
+        } else if (giftFor == "groom") {
+            if (groomGuestNum == 0) {
+                groomGuestNum++;
+                groomList = "Groom Gifts: <br />" + groomGuestNum + ". " + guestName + ": " + guestGift + "<br />";
+                giftTracking(guestGift, guestName);
+            } else {
+                groomGuestNum++;
+                groomList = groomList + groomGuestNum + ". " + guestName + ": " + guestGift + "<br />";
+                giftTracking(guestGift, guestName);
+            };
+        };
+        loopRun = confirm("Another guest?");
+    }; // end loop
+
+    if (brideList == null) {
+        brideList = "Bride Gifts: <br />None";
+    };
+
+    if (groomList == null) {
+        groomList = "Groom Gifts: <br />None";
+    };
+
+    return {
+        brideList : brideList,
+        groomList : groomList
+    };
+}; // end main
+
+// function used to keep up with gifts the client
+// wants to track.
+function giftTracking(gift, name) {
+    // define vars only use in function
+    var giftToaster = "toaster";
+    var giftSilverware = "silverware";
+    var giftStemware = "stemware";
+
+    // check if the gift is one of the tracked gifts
+    if (gift == giftSilverware) {
+        // add guest name to list
+        guestSilverware = guestSilverware + name + "<br />";
+    } else if (gift == giftStemware) {
+        // add guest name to list
+        guestStemware = guestStemware + name + "<br />";
+    } else if (gift == giftToaster) {
+        // add guest name to list
+        guestToaster = guestToaster + name + "<br />";
+    };
+};
+
+// instance obj
+var main = new main();
+
+// outputs
+document.write(main.brideList + "<br />");
+document.write(main.groomList + "<br />");
+document.write("Multiple toasters by:");
+document.write(guestToaster + "<br />");
+document.write("Multiple silverware by:");
+document.write(guestSilverware + "<br />");
+document.write("Multiple stemware by:");
+document.write(guestStemware + "<br />");
+
+
+</script>
